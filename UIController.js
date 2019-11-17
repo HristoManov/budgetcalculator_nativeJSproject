@@ -21,14 +21,6 @@ var UIController = (function() {
     
     var formatNumber = function(num, type) {
         var numSplit, int, dec, type;
-        /*
-            + or - before number
-            exactly 2 decimal points
-            comma separating the thousands
-
-            2310.4567 -> + 2,310.46
-            2000 -> + 2,000.00
-            */
 
         num = Math.abs(num);
         num = num.toFixed(2);
@@ -66,7 +58,6 @@ var UIController = (function() {
         
         addListItem: function(obj, type) {
             var html, newHtml, element;
-            // Create HTML string with placeholder text
             
             if (type === 'inc') {
                 element = DOMstrings.incomeContainer;
@@ -78,12 +69,11 @@ var UIController = (function() {
                 html = '<div class="item clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
             }
             
-            // Replace the placeholder text with some actual data
+            // Replacing the placeholder text with the data
             newHtml = html.replace('%id%', obj.id);
             newHtml = newHtml.replace('%description%', obj.description);
             newHtml = newHtml.replace('%value%', formatNumber(obj.value, type));
             
-            // Insert the HTML into the DOM
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
         },
         
@@ -148,7 +138,6 @@ var UIController = (function() {
             var now, months, month, year;
             
             now = new Date();
-            //var christmas = new Date(2016, 11, 25);
             
             months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
             month = now.getMonth();
